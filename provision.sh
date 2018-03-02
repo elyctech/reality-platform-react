@@ -17,14 +17,18 @@ apt-get install -y nodejs yarn
 
 # Install dependencies
 printf "\n -- Installing application dependencies\n\n"
-yarn --prod
+cd /vagrant
+# --no-bin-links is for Windows
+yarn install --no-bin-links
 
-printf "\n -- Installing react-script globally\n\n"
-yarn global add react-scripts
+printf "\n -- Installing webpack, webpack-cli, and webpack-dev-server globally\n\n"
+yarn global add webpack@4.0.1 webpack-cli@2.0.10 webpack-dev-server@3.1.0
 
 # Add yarn bin to Path and change directory to /vagrant on bash startup
-printf "\n -- Adding auto-cd to /vagrant\n\n"
+printf "\n -- Adding .yarn/bin to PATH and auto-cd to /vagrant in .profile\n\n"
 read -d '' profile <<EOF
+
+PATH="$HOME/.yarn/bin:$PATH"
 
 # Start in /vagrant
 cd /vagrant
@@ -32,7 +36,7 @@ EOF
 
 echo "$profile" >> /home/vagrant/.profile
 
-# Set up service
+# Set up service - this is only for a dev server
 printf "\n -- Adding service for Reality Platform React server\n\n"
 tee /etc/systemd/system/reality-platform-react.service <<EOF
 [Unit]
