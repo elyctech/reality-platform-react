@@ -1,5 +1,6 @@
-import React        from 'react';
+import React        from "react";
 
+import SceneManager from "./scene-manager/SceneManager";
 import SceneViewer  from "./SceneViewer";
 import ToolBox      from "./ToolBox";
 
@@ -9,10 +10,20 @@ class TileMaster extends React.Component
   {
     super(props);
 
+    this.setSceneDimensions = this.setSceneDimensions.bind(this);
+
     this.state = {
-      "height"  : 576,
-      "width"   : 640
-    }
+      "sceneHeight"  : 576,
+      "sceneWidth"   : 640
+    };
+  }
+
+  setSceneDimensions(height, width)
+  {
+    this.setState({
+      "sceneHeight"  : height,
+      "sceneWidth"   : width
+    });
   }
 
   render()
@@ -20,10 +31,13 @@ class TileMaster extends React.Component
     return (
       <div>
         <SceneViewer
-          height  = {this.state.height}
-          width   = {this.state.width}
+          height  = {this.state.sceneHeight}
+          width   = {this.state.sceneWidth}
         />
-        <ToolBox/>
+        <ToolBox  sceneHeight         = {this.state.sceneHeight}
+                  sceneWidth          = {this.state.sceneWidth}
+                  setSceneDimensions  = {this.setSceneDimensions}
+        />
       </div>
     );
   }

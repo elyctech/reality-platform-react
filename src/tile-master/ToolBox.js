@@ -1,7 +1,7 @@
-import React        from 'react';
+import React        from "react";
 
-import LayerManager from './layer-manager/LayerManager';
-import SceneManager from './scene-manager/SceneManager';
+import LayerManager from "./layer-manager/LayerManager";
+import SceneManager from "./scene-manager/SceneManager";
 import ToolButton   from "./ToolButton";
 import ToolDrawer   from "./ToolDrawer";
 import TileManager  from './tile-manager/TileManager';
@@ -13,83 +13,112 @@ class ToolBox extends React.Component
     super(props);
 
     this.state = {
-      "openDrawer"  : null
+      "openedDrawerContents"  : null
     };
+  }
 
-    this.toggleDrawer = this.toggleDrawer.bind(this);
-
-    const toolData  = new Map([
-      [
-        "scene-manager",
-        {
-          "element" : React.createElement(SceneManager),
-          "title"   : "Scene Manager"
-        }
-      ],
-      [
-        "tile-manager",
-        {
-          "element" : React.createElement(TileManager),
-          "title"   : "Tile Manager"
-        }
-      ],
-      [
-        "layer-manager",
-        {
-          "element" : React.createElement(LayerManager),
-          "title"   : "Layer Manager"
-        }
-      ]
-    ]);
-
-    this.toolButtons  = [];
-    this.toolDrawers = new Map();
-
-    for (let [toolId, tool] of toolData)
-    {
-      this.toolButtons.push(
-        React.createElement(
-          ToolButton,
-          {
-            key           : toolId,
-            title         : tool.title,
-            toggleDrawer  : this.toggleDrawer,
-            toolId        : toolId
-          }
-        )
-      );
-
-      this.toolDrawers.set(
-        toolId,
-        React.createElement(
-          ToolDrawer,
-          {
-            title   : tool.title,
-            toolId  : toolId
-          },
-          tool.element
-        )
-      );
-    }
+  closeDrawer()
+  {
+    this.setState({
+      "openedDrawerContents"  : null
+    });
   }
 
   toggleDrawer(toolId)
   {
-    this.setState({
-      "openDrawer"  : toolId
-    });
+    if (toolId === this.state.openedDrawerContents)
+    {
+      this.closeDrawer();
+    }
+    else
+    {
+      this.setState({
+        "openedDrawerContents"  : toolId
+      });
+    }
   }
 
   render()
   {
+    const layerManager  = React.createElement(
+      LayerManager
+    );
+
+    const sceneManager  = React.createElement(
+      SceneManager,
+      {
+        "height"              : this.props.sceneHeight,
+        "width"               : this.props.sceneWidth,
+        "setSceneDimensions"  : (height, width) =>
+        {
+          this.props.setSceneDimensions(
+            height,
+            width
+          );
+          this.closeDrawer();
+        }
+      }
+    );
+
+    const tileManager   = React.createElement(
+      TileManager
+    );
+
+    const buttons = [
+      React.createElement(
+        ToolButton,
+        {
+          "key"     : "layer-manager",
+          "onClick" : this.toggleDrawer.bind(
+            this,
+            layerManager
+          ),
+          "title"   : "Layer Manager"
+        }
+      ),
+      React.createElement(
+        ToolButton,
+        {
+          "key"     : "scene-manager",
+          "onClick" : this.toggleDrawer.bind(
+            this,
+            sceneManager
+          ),
+          "title"   : "Scene Manager"
+        }
+      ),
+      React.createElement(
+        ToolButton,
+        {
+          "key"     : "tile-manager",
+          "onClick" : this.toggleDrawer.bind(
+            this,
+            tileManager
+          ),
+          "title"   : "Tile Manager"
+        }
+      )
+    ];
+
+    var toolDrawer;
+
+    if (this.state.openedDrawerContents)
+    {
+      toolDrawer  = React.createElement(
+        ToolDrawer,
+        {},
+        this.state.openedDrawerContents
+      )
+    }
+
     return (
       <div>
-        <section>
-          {this.toolButtons}
-        </section>
-        <section>
-          {this.toolDrawers.get(this.state.openDrawer)}
-        </section>
+        <div  className = "tool-buttons">
+          {buttons}
+        </div>
+        <div>
+          {toolDrawer}
+        </div>
       </div>
     );
   }
