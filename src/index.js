@@ -11,7 +11,7 @@ import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 ReactDOM.render((
   <BrowserRouter>
-    <main>
+    <div>
       <nav>
         <ul>
           <li>
@@ -25,7 +25,7 @@ ReactDOM.render((
 
       <Route exact path="/" component={App}/>
       <Route path="/tile-master" component={TileMaster}/>
-    </main>
+    </div>
   </BrowserRouter>
 ), document.getElementById('app'));
 
