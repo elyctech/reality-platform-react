@@ -19,8 +19,8 @@ class ToolButton extends React.Component
   render()
   {
     return (
-      <span class   = "tool-button"
-            onClick = {this.toggleDrawer}
+      <span className = "tool-button"
+            onClick   = {this.toggleDrawer}
       >
         {this.props.title}
       </span>
