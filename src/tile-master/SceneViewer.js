@@ -1,17 +1,7 @@
-import React from 'react';
+import React from "react";
 
 class SceneViewer extends React.Component
 {
-  constructor(props)
-  {
-    super(props);
-
-    this.state = {
-      "height"  : props.height,
-      "width"   : props.width
-    }
-  }
-
   placeTile(event)
   {
     console.log(event);
@@ -20,11 +10,11 @@ class SceneViewer extends React.Component
   render()
   {
     return (
-      <canvas height  = {this.state.height}
+      <canvas height  = {this.props.height}
               id      = "scene_canvas"
               onClick = {this.placeTile}
               style   = {{backgroundColor: "black"}}
-              width   = {this.state.width}>
+              width   = {this.props.width}>
       </canvas>
     );
   }
