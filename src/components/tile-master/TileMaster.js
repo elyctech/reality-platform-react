@@ -1,8 +1,7 @@
 import React        from "react";
 
-import SceneManager from "./scene-manager/SceneManager";
-import SceneViewer  from "./SceneViewer";
-import ToolBox      from "./ToolBox";
+import SceneViewer  from "./scene-viewer/SceneViewer";
+import ToolBox      from "./tool-box/ToolBox";
 
 class TileMaster extends React.Component
 {

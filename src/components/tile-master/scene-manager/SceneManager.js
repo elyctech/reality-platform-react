@@ -1,7 +1,5 @@
 import React      from 'react';
 
-import ToolDrawer from '../ToolDrawer';
-
 class SceneManager extends React.Component
 {
   constructor(props)

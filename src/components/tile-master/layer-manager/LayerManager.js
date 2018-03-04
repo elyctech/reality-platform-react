@@ -1,7 +1,5 @@
 import React      from 'react';
 
-import ToolDrawer from '../ToolDrawer';
-
 class LayerManager extends React.Component
 {
   render()

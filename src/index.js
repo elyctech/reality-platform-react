@@ -1,9 +1,9 @@
-import React from 'react';
+import React    from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import App from './App';
-import TileMaster from './tile-master/TileMaster';
+import App        from './components/app/App';
+import TileMaster from './components/tile-master/TileMaster';
 
 import registerServiceWorker from './registerServiceWorker';
 
