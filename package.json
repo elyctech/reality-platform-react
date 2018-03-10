@@ -1,9 +1,9 @@
 {
-  "name": "reality_platform_react",
+  "name": "reality-platform-react",
   "version": "0.1.0",
   "private": true,
   "description": "A React implementation of the Reality Platform UI.",
-  "repository": "https://github.com/elyctech/reality_platform_react",
+  "repository": "https://github.com/elyctech/reality-platform-react",
   "author": "Cyle Ven Dawson",
   "license": "MIT",
   "devDependencies": {
