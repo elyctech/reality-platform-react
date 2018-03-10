@@ -1,10 +1,10 @@
 import React        from "react";
 
-import LayerManager from "./layer-manager/LayerManager";
-import SceneManager from "./scene-manager/SceneManager";
+import LayerManager from "../layer-manager/LayerManager";
+import SceneManager from "../scene-manager/SceneManager";
 import ToolButton   from "./ToolButton";
 import ToolDrawer   from "./ToolDrawer";
-import TileManager  from './tile-manager/TileManager';
+import TileManager  from '../tile-manager/TileManager';
 
 class ToolBox extends React.Component
 {
