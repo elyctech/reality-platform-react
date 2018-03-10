@@ -1,13 +1,17 @@
-import React    from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React    from "react";
+import ReactDOM from "react-dom";
+import               "./index.css";
 
-import App        from './components/app/App';
-import TileMaster from './components/tile-master/TileMaster';
+import App        from "./components/app/App";
+import TileMaster from "./components/tile-master/TileMaster";
 
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker  from "./registerServiceWorker";
 
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Link,
+  Route
+} from "react-router-dom";
 
 ReactDOM.render((
   <BrowserRouter>

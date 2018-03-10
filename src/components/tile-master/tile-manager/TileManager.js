@@ -1,4 +1,6 @@
-import React      from 'react';
+import React  from "react";
+
+import TileSelector from "./TileSelector";
 
 class TileManager extends React.Component
 {

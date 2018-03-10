@@ -1,4 +1,4 @@
-import React        from "react";
+import React  from "react";
 
 import SceneViewer  from "./scene-viewer/SceneViewer";
 import ToolBox      from "./tool-box/ToolBox";

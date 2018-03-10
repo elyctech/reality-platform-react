@@ -1,4 +1,4 @@
-import React        from "react";
+import React  from "react";
 
 import LayerManager from "../layer-manager/LayerManager";
 import SceneManager from "../scene-manager/SceneManager";
