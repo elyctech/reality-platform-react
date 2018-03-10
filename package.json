@@ -23,7 +23,7 @@
     "webpack-dev-server": "^3.1.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --watch-poll --mode development --host 0.0.0.0 --port 8080",
+    "start": "webpack-dev-server --watch-poll --mode development --host 192.168.144.100 --port 8080",
     "build": "webpack --mode production"
   }
 }
