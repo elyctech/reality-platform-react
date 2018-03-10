@@ -16,5 +16,12 @@ Vagrant.configure("2") do |config|
     vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
   end
 
-  config.vm.provision :shell, path: "provision.sh"
+  config.vm.provision "ansible" do |ansible|
+    ansible.inventory_path  = "./ansible/hosts"
+    ansible.limit           = "all"
+    ansible.playbook        = "./ansible/site.yml"
+
+    # Debugging
+    ansible.verbose         = "vvvv"
+  end
 end
