@@ -2,33 +2,43 @@ import React    from "react";
 import ReactDOM from "react-dom";
 import               "./index.css";
 
-import App        from "./components/app/App";
-import TileMaster from "./components/tile-master/TileMaster";
+import HomeView     from "./views/home/HomeView";
+import Navigation   from "./views/index/components/Navigation";
+import NotFoundView from "./views/not-found/NotFoundView";
 
 import registerServiceWorker  from "./registerServiceWorker";
 
 import {
   BrowserRouter,
   Link,
-  Route
+  Route,
+  Switch
 } from "react-router-dom";
 
 ReactDOM.render((
   <BrowserRouter>
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/tile-master">Tile Master</Link>
-          </li>
-        </ul>
-      </nav>
+      <header className = "header">
+        <Link to = "/">
+          Home
+        </Link>
+      </header>
+      <div>
+        <Navigation
+          userLoggedIn={false}
+        />
+      </div>
 
-      <Route exact path="/" component={App}/>
-      <Route path="/tile-master" component={TileMaster}/>
+      <Switch>
+        <Route
+          component = {HomeView}
+          exact
+          path      = "/"
+        />
+        <Route
+          component = {NotFoundView}
+        />
+      </Switch>
     </div>
   </BrowserRouter>
 ), document.getElementById('app'));
