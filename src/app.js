@@ -1,8 +1,8 @@
 import React  from "react";
 
-import HomeView     from "./views/home/HomeView";
-import Navigation   from "./views/index/components/Navigation";
-import NotFoundView from "./views/not-found/NotFoundView";
+import HomeView             from "./lib/views/home/HomeView";
+import Navigation           from "./lib/views/index/components/Navigation";
+import NotFoundView         from "./lib/views/not-found/NotFoundView";
 
 import {
   Link,
