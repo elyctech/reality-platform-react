@@ -10,7 +10,7 @@ import App  from "./app";
 
 import registerServiceWorker  from "./registerServiceWorker";
 
-ReactDOM.render((
+ReactDOM.hydrate((
   <BrowserRouter>
     <App/>
   </BrowserRouter>
