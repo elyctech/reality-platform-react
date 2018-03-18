@@ -43,7 +43,7 @@ export default (url) =>
           location  = layout.indexOf("</div>");
 
     result  = {
-      "body"  : layout.slice(0, location) + html + layout.slice(location)
+      "body"  : layout.slice(0, location).slice(0, -1) + html + layout.slice(location)
     };
   }
 
