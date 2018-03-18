@@ -10,7 +10,7 @@ http.createServer(
   {
     const filePath  = "./dist" + url.parse(request.url).pathname;
 
-    if (fs.existsSync(filePath))
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile())
     {
       response.end(
         fs.readFileSync(filePath)
