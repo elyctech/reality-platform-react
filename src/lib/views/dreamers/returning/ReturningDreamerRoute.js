@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 
-class NewDreamerRoute extends Route
+class ReturningDreamerRoute extends Route
 {
   render()
   {
@@ -26,9 +26,9 @@ class NewDreamerRoute extends Route
       routeComponent  = React.createElement(
         this.props.view,
         {
-          "controller"          : this.props.controller,
-          "dreamerService"      : this.props.dreamerService,
-          "flashMessageService" : this.props.flashMessageService
+          "controller"      : this.props.controller,
+          "dreamerService"  : this.props.dreamerService,
+          "setDreamer"      : this.props.setDreamer
         }
       );
     }
@@ -37,4 +37,4 @@ class NewDreamerRoute extends Route
   }
 }
 
-export default NewDreamerRoute;
+export default ReturningDreamerRoute;

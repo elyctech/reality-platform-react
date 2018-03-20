@@ -2,7 +2,8 @@ import React  from "react";
 
 import AsyncComponent from "../../components/AsyncComponent";
 
-import NewDreamerRoute  from "../dreamers/new/NewDreamerRoute";
+import NewDreamerRoute        from "../dreamers/new/NewDreamerRoute";
+import ReturningDreamerRoute  from "../dreamers/returning/ReturningDreamerRoute";
 
 import DreamerDashboardView from "../dreamers/_username/dashboard/DreamerDashboardView";
 import FlashMessenger       from "../main/components/FlashMessenger";
@@ -64,38 +65,14 @@ class MainView extends AsyncComponent
             flashMessageService = {flashMessageService}
             view                = {NewDreamerView}
           />
-          <Route
-            path    = "/dreamers/returning"
-            render  = {
-              () => {
-                console.log("returning route");
-                let routeComponent;
+          <ReturningDreamerRoute
+            path            = "/dreamers/returning"
 
-                if (
-                  this.state.dreamer
-                ) {
-                  routeComponent  = React.createElement(
-                    Redirect,
-                    {
-                      "to"  : `/dreamers/${this.state.dreamer.username}/dashboard`
-                    }
-                  );
-                }
-                else
-                {
-                  routeComponent  = React.createElement(
-                    ReturningDreamerView,
-                    {
-                      "controller"      : returningDreamerController,
-                      "dreamerService"  : this.props.dreamerService,
-                      "setDreamer"      : this.props.controller.setDreamer.bind(this)
-                    }
-                  );
-                }
-
-                return routeComponent;
-              }
-            }
+            dreamer         = {this.state.dreamer}
+            controller      = {returningDreamerController}
+            dreamerService  = {this.props.dreamerService}
+            setDreamer      = {this.props.controller.setDreamer.bind(this)}
+            view            = {ReturningDreamerView}
           />
           <Route
             path    = "/dreamers/:username/dashboard"
