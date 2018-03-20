@@ -2,6 +2,8 @@ import React  from "react";
 
 import AsyncComponent from "../../components/AsyncComponent";
 
+import NewDreamerRoute  from "../dreamers/new/NewDreamerRoute";
+
 import DreamerDashboardView from "../dreamers/_username/dashboard/DreamerDashboardView";
 import FlashMessenger       from "../main/components/FlashMessenger";
 import HomeView             from "../home/HomeView";
@@ -47,49 +49,26 @@ class MainView extends AsyncComponent
             flashMessageService = {flashMessageService}
           />
         </div>
-
         <Switch>
           <Route
             component = {HomeView}
             exact
             path      = "/"
           />
-          <Route
-            path    = "/dreamers/new"
-            render  = {
-              () => {
-                let routeComponent;
+          <NewDreamerRoute
+            path                = "/dreamers/new"
 
-                if (
-                  this.state.dreamer
-                ) {
-                  routeComponent  = React.createElement(
-                    Redirect,
-                    {
-                      "to"  : `/dreamers/${this.state.dreamer.username}/dashboard`
-                    }
-                  );
-                }
-                else
-                {
-                  routeComponent  = React.createElement(
-                    NewDreamerView,
-                    {
-                      "controller"      : newDreamerController,
-                      "dreamerService"  : this.props.dreamerService,
-                      flashMessageService
-                    }
-                  );
-                }
-
-                return routeComponent;
-              }
-            }
+            controller          = {newDreamerController}
+            dreamer             = {this.state.dreamer}
+            dreamerService      = {this.props.dreamerService}
+            flashMessageService = {flashMessageService}
+            view                = {NewDreamerView}
           />
           <Route
             path    = "/dreamers/returning"
             render  = {
               () => {
+                console.log("returning route");
                 let routeComponent;
 
                 if (
