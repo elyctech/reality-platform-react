@@ -4,6 +4,7 @@ import AsyncComponent from "../../components/AsyncComponent";
 
 import NewDreamerRoute        from "../dreamers/new/NewDreamerRoute";
 import ReturningDreamerRoute  from "../dreamers/returning/ReturningDreamerRoute";
+import DreamerDashboardRoute  from "../dreamers/_username/dashboard/DreamerDashboardRoute";
 
 import DreamerDashboardView from "../dreamers/_username/dashboard/DreamerDashboardView";
 import FlashMessenger       from "../main/components/FlashMessenger";
@@ -74,36 +75,11 @@ class MainView extends AsyncComponent
             setDreamer      = {this.props.controller.setDreamer.bind(this)}
             view            = {ReturningDreamerView}
           />
-          <Route
+          <DreamerDashboardRoute
             path    = "/dreamers/:username/dashboard"
-            render  = {
-              () =>
-              {
-                let routeComponent;
 
-                if (
-                  this.state.dreamer
-                ) {
-                  routeComponent  = React.createElement(
-                    DreamerDashboardView,
-                    {
-                      "dreamer" : this.state.dreamer
-                    }
-                  );
-                }
-                else
-                {
-                  routeComponent  = React.createElement(
-                    Redirect,
-                    {
-                      "to"  : `/dreamers/returning`
-                    }
-                  );
-                }
-
-                return routeComponent;
-              }
-            }
+            dreamer = {this.state.dreamer}
+            view    = {DreamerDashboardView}
           />
           <Route
             component = {NotFoundView}
