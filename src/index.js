@@ -6,7 +6,7 @@ import {
   BrowserRouter
 } from "react-router-dom";
 
-import App  from "./app";
+import App  from "./App";
 
 import registerServiceWorker  from "./registerServiceWorker";
 

@@ -8,7 +8,9 @@ const renderServerSideModule  = require.resolve("./renderServerSide");
 http.createServer(
   (request, response) =>
   {
-    const filePath  = "./dist" + url.parse(request.url).pathname;
+    const parsedUrl = url.parse(request.url);
+
+    const filePath  = "./dist" + parsedUrl.pathname;
 
     if (fs.existsSync(filePath) && fs.statSync(filePath).isFile())
     {
@@ -18,6 +20,10 @@ http.createServer(
     }
     else
     {
+      global.window = {
+        "location"  : parsedUrl
+      };
+
       delete require.cache[renderServerSideModule];
       const  renderServerSide  = require("./renderServerSide");
 
