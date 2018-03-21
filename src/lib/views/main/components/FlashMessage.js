@@ -5,11 +5,11 @@ class FlashMessage extends React.Component
   render()
   {
     return (
-      <p
+      <div
         className = {this.props.type}
       >
         {this.props.content}
-      </p>
+      </div>
     );
   }
 }
