@@ -1,7 +1,7 @@
 import DreamerService from "../../lib/services/DreamerService";
 
-import apiService from "./apiService";
+import api  from "./api";
 
 export default new DreamerService(
-  apiService
+  api
 );

@@ -1,29 +1,26 @@
 class DreamerService
 {
   constructor(
-    apiService
+    api
   ) {
-    this.apiService = apiService;
-    this.dreamer    = Promise.resolve(null);
+    this.api      = api;
+    this.dreamer  = Promise.resolve(null);
   }
 
   createAccount(
     username,
     password
   ) {
-    return this.apiService.callEndpoint(
+    return this.api.post(
       "dreamers",
-      "post",
       {
         username,
         password
       }
     ).then(
-      (response) =>
+      (dreamer) =>
       {
-        this.dreamer  = response.json();
-
-        return this.dreamer;
+        this.dreamer  = dreamer;
       }
     );
   }
@@ -38,19 +35,16 @@ class DreamerService
     username,
     password
   ) {
-    return this.apiService.callEndpoint(
+    return this.api.post(
       "dreamers/sessions",
-      "post",
       {
         username,
         password
       }
     ).then(
-      (response) =>
+      (dreamer) =>
       {
-        this.dreamer  = response.json();
-
-        return this.dreamer;
+        this.dreamer  = dreamer;
       }
     );
   }
