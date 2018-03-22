@@ -1,4 +1,4 @@
-import Api from "../../lib/services/Api";
+import Api from "../../../lib/reality/services/Api";
 
 export default new Api(
   `${window.location.protocol}//${window.location.hostname}`,

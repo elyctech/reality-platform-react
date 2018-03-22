@@ -14,9 +14,9 @@ import NewDreamerView       from "../dreamers/new/NewDreamerView";
 import NotFoundView         from "../not-found/NotFoundView";
 import ReturningDreamerView from "../dreamers/returning/ReturningDreamerView";
 
-import flashMessageService        from "../../../app/services/flashMessageService"
-import newDreamerController       from "../../../app/views/dreamers/returning/newDreamerController";
-import returningDreamerController from "../../../app/views/dreamers/returning/returningDreamerController";
+import flashMessageService        from "../../../../app/reality/services/flashMessageService"
+import newDreamerController       from "../../../../app/reality/views/dreamers/returning/newDreamerController";
+import returningDreamerController from "../../../../app/reality/views/dreamers/returning/returningDreamerController";
 
 import {
   Link,
