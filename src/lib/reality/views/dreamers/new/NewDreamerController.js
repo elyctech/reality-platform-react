@@ -8,7 +8,7 @@ class NewDreamerController
       this.state.username,
       this.state.password
     ).then(
-      (dreamer) =>
+      () =>
       {
         this.props.flashMessageService.queueMessage(
           "Successfully created Dreamer account!",

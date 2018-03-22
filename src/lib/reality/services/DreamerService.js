@@ -45,6 +45,8 @@ class DreamerService
       (dreamer) =>
       {
         this.dreamer  = dreamer;
+
+        return dreamer;
       }
     );
   }
